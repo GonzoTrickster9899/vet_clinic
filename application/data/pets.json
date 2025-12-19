@@ -1,0 +1,24 @@
+[
+    {
+        "customer_id": "1",
+        "name": "Hop",
+        "species": "Rabbit",
+        "breed": "Snowy Bunny",
+        "age": "2",
+        "weight": "3",
+        "medical_history": "",
+        "created_at": "2025-12-19 00:35:14",
+        "id": 1
+    },
+    {
+        "customer_id": "1",
+        "name": "Harley",
+        "species": "Dog",
+        "breed": "Pomeranian",
+        "age": "4",
+        "weight": "8",
+        "medical_history": "",
+        "created_at": "2025-12-19 00:36:56",
+        "id": 2
+    }
+]

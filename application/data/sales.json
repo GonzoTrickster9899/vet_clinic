@@ -1,0 +1,23 @@
+[
+    {
+        "customer_id": "1",
+        "items": [
+            {
+                "id": "1",
+                "name": "Cat Food",
+                "quantity": 1,
+                "price": 125
+            },
+            {
+                "id": "2",
+                "name": "Bone Toy",
+                "quantity": 2,
+                "price": 99
+            }
+        ],
+        "total": "323.00",
+        "payment_method": "cash",
+        "date": "2025-12-19 00:40:34",
+        "id": 1
+    }
+]
