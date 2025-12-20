@@ -3,21 +3,84 @@
         "customer_id": "1",
         "items": [
             {
-                "id": "1",
-                "name": "Cat Food",
+                "id": "3",
+                "name": "Aozi Beef & Liver",
                 "quantity": 1,
-                "price": 125
+                "price": 1200
             },
             {
-                "id": "2",
-                "name": "Bone Toy",
-                "quantity": 2,
-                "price": 99
+                "id": "5",
+                "name": "Madre de Cacao Shampoo",
+                "quantity": 1,
+                "price": 250
             }
         ],
-        "total": "323.00",
+        "total": "1450.00",
         "payment_method": "cash",
-        "date": "2025-12-19 00:40:34",
+        "date": "2025-12-20 12:38:44",
         "id": 1
+    },
+    {
+        "customer_id": "2",
+        "items": [
+            {
+                "id": "9",
+                "name": "Ear Flush Solution",
+                "quantity": 2,
+                "price": 650
+            },
+            {
+                "id": "1",
+                "name": "Nexgard Spectra",
+                "quantity": 1,
+                "price": 2450
+            }
+        ],
+        "total": "3750.00",
+        "payment_method": "cash",
+        "date": "2025-12-20 12:39:30",
+        "id": 2
+    },
+    {
+        "customer_id": "3",
+        "items": [
+            {
+                "id": "7",
+                "name": "Alfalfa Hay",
+                "quantity": 3,
+                "price": 550
+            },
+            {
+                "id": "10",
+                "name": "Vitamin C Syrup",
+                "quantity": 1,
+                "price": 180
+            }
+        ],
+        "total": "1830.00",
+        "payment_method": "cash",
+        "date": "2025-12-20 12:40:15",
+        "id": 3
+    },
+    {
+        "customer_id": "4",
+        "items": [
+            {
+                "id": "6",
+                "name": "Braided Nylon Leash",
+                "quantity": 1,
+                "price": 450
+            },
+            {
+                "id": "3",
+                "name": "Aozi Beef & Liver",
+                "quantity": 2,
+                "price": 1200
+            }
+        ],
+        "total": "2850.00",
+        "payment_method": "cash",
+        "date": "2025-12-20 12:40:40",
+        "id": 4
     }
 ]

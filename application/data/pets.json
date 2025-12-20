@@ -1,24 +1,68 @@
 [
     {
         "customer_id": "1",
-        "name": "Hop",
-        "species": "Rabbit",
-        "breed": "Snowy Bunny",
-        "age": "2",
-        "weight": "3",
-        "medical_history": "",
-        "created_at": "2025-12-19 00:35:14",
+        "name": "Bantay",
+        "species": "Dog",
+        "breed": "Aspin (Mixed)",
+        "age": "4",
+        "weight": "18.5",
+        "medical_history": "Recovered from Ehrlichia (tick fever) in 2023; Fully vaccinated (5-in-1, Anti-Rabies).",
+        "created_at": "2025-12-20 10:44:38",
         "id": 1
     },
     {
         "customer_id": "1",
-        "name": "Harley",
-        "species": "Dog",
-        "breed": "Pomeranian",
-        "age": "4",
-        "weight": "8",
-        "medical_history": "",
-        "created_at": "2025-12-19 00:36:56",
+        "name": "Miming",
+        "species": "Cat",
+        "breed": "Puspin (Domestic Shorthair)",
+        "age": "2",
+        "weight": "4.2",
+        "medical_history": "Spayed in 2024; Mild allergy to chicken-based dry food.",
+        "created_at": "2025-12-20 10:50:38",
         "id": 2
+    },
+    {
+        "customer_id": "2",
+        "name": "Princess",
+        "species": "Dog",
+        "breed": "Shih Tzu",
+        "age": "6",
+        "weight": "6.1",
+        "medical_history": "History of IVDD (back issues); requires monthly grooming and ear cleaning for chronic yeast infections.",
+        "created_at": "2025-12-20 10:55:12",
+        "id": 3
+    },
+    {
+        "customer_id": "3",
+        "name": "Snowball",
+        "species": "Rabbit",
+        "breed": "Holland Lop",
+        "age": "3",
+        "weight": "1.8",
+        "medical_history": "History of GI Stasis (Dec 2024); teeth filing required once a year.",
+        "created_at": "2025-12-20 10:57:57",
+        "id": 4
+    },
+    {
+        "customer_id": "3",
+        "name": "Pico",
+        "species": "Bird",
+        "breed": "African Lovebird",
+        "age": "1",
+        "weight": ".1",
+        "medical_history": "No previous illnesses; wing clipping done regularly.",
+        "created_at": "2025-12-20 10:59:42",
+        "id": 5
+    },
+    {
+        "customer_id": "4",
+        "name": "Bruno",
+        "species": "Dog",
+        "breed": "Golden Retriever",
+        "age": "2",
+        "weight": "32",
+        "medical_history": "Hip dysplasia screening (Negative); Up-to-date on heartworm preventatives (Nexgard Spectra).",
+        "created_at": "2025-12-20 12:14:42",
+        "id": 6
     }
 ]
