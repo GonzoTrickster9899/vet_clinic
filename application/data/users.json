@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "email": "admin@vetclinic.com",
+        "password": "$2y$10$qsBi.ocGipe2Zbpizt2JcO2RN4uMCSxXOdo8MhFFQd5qPv1q9zYci",
+        "full_name": "System Administrator",
+        "role": "admin",
+        "created_at": "2025-12-21 13:04:39",
+        "status": "active"
+    },
+    {
+        "username": "test001",
+        "email": "test001@gmail.com",
+        "password": "$2y$10$7XcBwDPqkqxEYJnXojbS2eV3bnu8hwWSm9OOKVRqbS.xwL.cTGwUC",
+        "full_name": "Test User 1",
+        "role": "user",
+        "created_at": "2025-12-21 14:24:43",
+        "status": "active",
+        "id": 2
+    }
+]
