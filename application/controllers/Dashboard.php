@@ -1,9 +1,8 @@
 <?php
-class Dashboard extends CI_Controller {
+class Dashboard extends MY_Controller { // Changed from CI_Controller
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('json_model');
     }
     
     public function index() {

@@ -1,10 +1,8 @@
 <?php
-class Sales extends CI_Controller {
+class Sales extends MY_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('json_model');
-        $this->load->helper(['url', 'form']);
     }
     
     public function index() {

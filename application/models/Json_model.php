@@ -15,11 +15,28 @@ class Json_model extends CI_Model {
     }
     
     private function init_files() {
-        $files = ['customers', 'pets', 'appointments', 'inventory', 'sales'];
+        $files = ['customers', 'pets', 'appointments', 'inventory', 'sales', 'users']; // Added users
         foreach ($files as $file) {
             $filepath = $this->data_dir . $file . '.json';
             if (!file_exists($filepath)) {
-                file_put_contents($filepath, json_encode([]));
+                // Create default admin user for users.json
+                if ($file === 'users') {
+                    $default_users = [
+                        [
+                            'id' => 1,
+                            'username' => 'admin',
+                            'email' => 'admin@vetclinic.com',
+                            'password' => password_hash('admin123', PASSWORD_BCRYPT),
+                            'full_name' => 'System Administrator',
+                            'role' => 'admin',
+                            'created_at' => date('Y-m-d H:i:s'),
+                            'status' => 'active'
+                        ]
+                    ];
+                    file_put_contents($filepath, json_encode($default_users, JSON_PRETTY_PRINT));
+                } else {
+                    file_put_contents($filepath, json_encode([]));
+                }
             }
         }
     }

@@ -11,9 +11,20 @@
         nav { background: #2c3e50; padding: 15px 0; margin-bottom: 30px; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         nav h1 { color: #fff; font-size: 24px; }
+        nav .nav-left { display: flex; align-items: center; gap: 30px; }
+        nav .nav-right { display: flex; align-items: center; gap: 15px; }
         nav ul { list-style: none; display: flex; gap: 20px; }
         nav a { color: #fff; text-decoration: none; padding: 8px 15px; border-radius: 4px; }
         nav a:hover { background: #34495e; }
+        .user-info { color: #fff; padding: 8px 15px; background: #34495e; border-radius: 4px; }
+        .user-info .role { 
+            display: inline-block;
+            background: #e74c3c;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
         .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .btn { padding: 10px 20px; background: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
         .btn:hover { background: #2980b9; }
@@ -40,15 +51,26 @@
 <body>
     <nav>
         <div class="container">
-            <h1>🐾 Vet Clinic & Pet Shop</h1>
-            <ul>
-                <li><a href="<?= base_url() ?>">Dashboard</a></li>
-                <li><a href="<?= base_url('customers') ?>">Customers</a></li>
-                <li><a href="<?= base_url('pets') ?>">Pets</a></li>
-                <li><a href="<?= base_url('appointments') ?>">Appointments</a></li>
-                <li><a href="<?= base_url('inventory') ?>">Inventory</a></li>
-                <li><a href="<?= base_url('sales') ?>">Sales</a></li>
-            </ul>
+            <div class="nav-left">
+                <h1>🐾 Vet Clinic & Pet Shop</h1>
+                <ul>
+                    <li><a href="<?= base_url() ?>">Dashboard</a></li>
+                    <li><a href="<?= base_url('customers') ?>">Customers</a></li>
+                    <li><a href="<?= base_url('pets') ?>">Pets</a></li>
+                    <li><a href="<?= base_url('appointments') ?>">Appointments</a></li>
+                    <li><a href="<?= base_url('inventory') ?>">Inventory</a></li>
+                    <li><a href="<?= base_url('sales') ?>">Sales</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <?php if ($this->session->userdata('logged_in')): ?>
+                    <div class="user-info">
+                        👤 <?= $this->session->userdata('full_name') ?>
+                        <span class="role"><?= strtoupper($this->session->userdata('role')) ?></span>
+                    </div>
+                    <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
+                <?php endif; ?>
+            </div>
         </div>
     </nav>
     <div class="container">

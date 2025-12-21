@@ -55,6 +55,10 @@ $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'auth/login';
+$route['register'] = 'auth/register';
+$route['logout'] = 'auth/logout';
+
 $route['customers'] = 'customers/index';
 $route['customers/add'] = 'customers/add';
 $route['customers/edit/(:num)'] = 'customers/edit/$1';

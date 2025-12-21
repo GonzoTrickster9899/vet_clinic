@@ -1,10 +1,8 @@
 <?php
-class Inventory extends CI_Controller {
+class Inventory extends MY_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('json_model');
-        $this->load->helper(['url', 'form']);
         $this->load->library('form_validation');
     }
     
