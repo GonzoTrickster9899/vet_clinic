@@ -67,6 +67,8 @@ $route['customers/delete/(:num)'] = 'customers/delete/$1';
 $route['pets'] = 'pets/index';
 $route['pets/add'] = 'pets/add';
 $route['pets/edit/(:num)'] = 'pets/edit/$1';
+$route['pets/view/(:num)'] = 'pets/view/$1';
+$route['pets/delete_image/(:num)'] = 'pets/delete_image/$1';
 
 $route['appointments'] = 'appointments/index';
 $route['appointments/add'] = 'appointments/add';
