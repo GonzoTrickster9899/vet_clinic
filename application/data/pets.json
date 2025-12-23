@@ -8,7 +8,8 @@
         "weight": "18.5",
         "medical_history": "Recovered from Ehrlichia (tick fever) in 2023; Fully vaccinated (5-in-1, Anti-Rabies).",
         "created_at": "2025-12-20 10:44:38",
-        "id": 1
+        "id": "1",
+        "image": "c77c51c15b260acf2bfd6bbc73bfbe6c.png"
     },
     {
         "customer_id": "1",
