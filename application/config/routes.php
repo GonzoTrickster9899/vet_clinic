@@ -77,6 +77,11 @@ $route['appointments/edit/(:num)'] = 'appointments/edit/$1';
 $route['inventory'] = 'inventory/index';
 $route['inventory/add'] = 'inventory/add';
 $route['inventory/edit/(:num)'] = 'inventory/edit/$1';
+$route['inventory/view/(:num)'] = 'inventory/view/$1';
+$route['inventory/qrcode/(:num)'] = 'inventory/qrcode/$1';
+$route['inventory/print_qrcodes'] = 'inventory/print_qrcodes';
+$route['inventory/scan'] = 'inventory/scan';
+$route['inventory/lookup'] = 'inventory/lookup';
 
 $route['sales'] = 'sales/index';
 $route['sales/add'] = 'sales/add';
