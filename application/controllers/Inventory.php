@@ -1,10 +1,35 @@
 <?php
 class Inventory extends MY_Controller {
     
+    private $upload_path = './assets/images/inventory/';
+    
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('QRCode');
+        $this->init_upload_directory();
+    }
+    
+    private function init_upload_directory() {
+        if (!is_dir($this->upload_path)) {
+            @mkdir($this->upload_path, 0777, true);
+        }
+    }
+    
+    private function check_upload_directory() {
+        if (!is_dir($this->upload_path)) {
+            $this->session->set_flashdata('error', 
+                'Upload directory does not exist. Please contact administrator.');
+            return false;
+        }
+        
+        if (!is_writable($this->upload_path)) {
+            $this->session->set_flashdata('error', 
+                'Upload directory is not writable. Please check permissions.');
+            return false;
+        }
+        
+        return true;
     }
     
     public function index() {
@@ -28,6 +53,9 @@ class Inventory extends MY_Controller {
             $this->load->view('inventory/add');
             $this->load->view('templates/footer');
         } else {
+            // Handle image upload
+            $image_name = $this->upload_item_image();
+            
             $item = [
                 'name' => $this->input->post('name'),
                 'category' => $this->input->post('category'),
@@ -36,15 +64,12 @@ class Inventory extends MY_Controller {
                 'price' => $this->input->post('price'),
                 'supplier' => $this->input->post('supplier'),
                 'sku' => $this->generate_sku(),
+                'image' => $image_name,
                 'created_at' => date('Y-m-d H:i:s')
             ];
             
-            $item_id = $this->json_model->insert('inventory', $item);
-            
-            // Generate QR code data
-            $this->generate_item_qr($item_id);
-            
-            $this->session->set_flashdata('success', 'Item added successfully with QR code!');
+            $this->json_model->insert('inventory', $item);
+            $this->session->set_flashdata('success', 'Item added successfully!');
             redirect('inventory');
         }
     }
@@ -67,6 +92,19 @@ class Inventory extends MY_Controller {
                 'supplier' => $this->input->post('supplier')
             ];
             
+            // Handle new image upload
+            $new_image = $this->upload_item_image();
+            if ($new_image) {
+                // Delete old image if exists
+                if (isset($data['item']['image']) && !empty($data['item']['image'])) {
+                    $old_image_path = $this->upload_path . $data['item']['image'];
+                    if (file_exists($old_image_path)) {
+                        @unlink($old_image_path);
+                    }
+                }
+                $item['image'] = $new_image;
+            }
+            
             $this->json_model->update('inventory', $id, $item);
             $this->session->set_flashdata('success', 'Item updated successfully!');
             redirect('inventory');
@@ -75,6 +113,63 @@ class Inventory extends MY_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('inventory/edit', $data);
         $this->load->view('templates/footer');
+    }
+    
+    public function delete($id) {
+        $item = $this->json_model->get_by_id('inventory', $id);
+        
+        // Delete item image if exists
+        if ($item && isset($item['image']) && !empty($item['image'])) {
+            $image_path = $this->upload_path . $item['image'];
+            if (file_exists($image_path)) {
+                @unlink($image_path);
+            }
+        }
+        
+        $this->json_model->delete('inventory', $id);
+        $this->session->set_flashdata('success', 'Item deleted successfully!');
+        redirect('inventory');
+    }
+    
+    public function delete_image($id) {
+        $item = $this->json_model->get_by_id('inventory', $id);
+        
+        if ($item && isset($item['image']) && !empty($item['image'])) {
+            $image_path = $this->upload_path . $item['image'];
+            if (file_exists($image_path)) {
+                @unlink($image_path);
+            }
+            
+            $this->json_model->update('inventory', $id, ['image' => '']);
+            $this->session->set_flashdata('success', 'Item image deleted successfully!');
+        }
+        
+        redirect('inventory/edit/' . $id);
+    }
+    
+    private function upload_item_image() {
+        if (!empty($_FILES['item_image']['name'])) {
+            if (!$this->check_upload_directory()) {
+                return '';
+            }
+            
+            $config['upload_path'] = $this->upload_path;
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048; // 2MB
+            $config['encrypt_name'] = TRUE;
+            
+            $this->load->library('upload', $config);
+            
+            if ($this->upload->do_upload('item_image')) {
+                $upload_data = $this->upload->data();
+                return $upload_data['file_name'];
+            } else {
+                $error = $this->upload->display_errors('', '');
+                $this->session->set_flashdata('error', 'Upload failed: ' . $error);
+                return '';
+            }
+        }
+        return '';
     }
     
     public function view($id) {
@@ -105,14 +200,12 @@ class Inventory extends MY_Controller {
         $qr_data = $this->get_qr_data($item);
         $data['qr_code_url'] = $this->qrcode->generate($qr_data, 300);
         
-        // Load print-friendly QR code view
         $this->load->view('inventory/qrcode_print', $data);
     }
     
     public function print_qrcodes() {
         $data['items'] = $this->json_model->get_all('inventory');
         
-        // Generate QR codes for all items
         foreach ($data['items'] as &$item) {
             $qr_data = $this->get_qr_data($item);
             $item['qr_code_url'] = $this->qrcode->generate($qr_data, 200);
@@ -150,14 +243,12 @@ class Inventory extends MY_Controller {
     }
     
     private function generate_sku() {
-        // Generate unique SKU: VET-YYYY-XXXXX
         $year = date('Y');
         $random = strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
         return "VET-{$year}-{$random}";
     }
     
     private function get_qr_data($item) {
-        // Create JSON data for QR code
         $qr_data = [
             'sku' => isset($item['sku']) ? $item['sku'] : 'VET-' . $item['id'],
             'name' => $item['name'],
@@ -167,13 +258,5 @@ class Inventory extends MY_Controller {
         ];
         
         return json_encode($qr_data);
-    }
-    
-    private function generate_item_qr($item_id) {
-        $item = $this->json_model->get_by_id('inventory', $item_id);
-        if ($item && !isset($item['sku'])) {
-            $sku = $this->generate_sku();
-            $this->json_model->update('inventory', $item_id, ['sku' => $sku]);
-        }
     }
 }

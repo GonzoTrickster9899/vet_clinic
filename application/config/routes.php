@@ -51,29 +51,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$route['default_controller'] = 'welcome';
 
+// Default Page
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// Login Page
 $route['login'] = 'auth/login';
 $route['register'] = 'auth/register';
 $route['logout'] = 'auth/logout';
 
+// Customer Page
 $route['customers'] = 'customers/index';
 $route['customers/add'] = 'customers/add';
 $route['customers/edit/(:num)'] = 'customers/edit/$1';
 $route['customers/delete/(:num)'] = 'customers/delete/$1';
 
+// Pet Page
 $route['pets'] = 'pets/index';
 $route['pets/add'] = 'pets/add';
 $route['pets/edit/(:num)'] = 'pets/edit/$1';
 $route['pets/view/(:num)'] = 'pets/view/$1';
 $route['pets/delete_image/(:num)'] = 'pets/delete_image/$1';
 
+// Appointment Page
 $route['appointments'] = 'appointments/index';
 $route['appointments/add'] = 'appointments/add';
 $route['appointments/edit/(:num)'] = 'appointments/edit/$1';
 
+// Inventory Page
 $route['inventory'] = 'inventory/index';
 $route['inventory/add'] = 'inventory/add';
 $route['inventory/edit/(:num)'] = 'inventory/edit/$1';
@@ -82,7 +88,9 @@ $route['inventory/qrcode/(:num)'] = 'inventory/qrcode/$1';
 $route['inventory/print_qrcodes'] = 'inventory/print_qrcodes';
 $route['inventory/scan'] = 'inventory/scan';
 $route['inventory/lookup'] = 'inventory/lookup';
+$route['inventory/delete_image/(:num)'] = 'inventory/delete_image/$1';
 
+// Sales Page
 $route['sales'] = 'sales/index';
 $route['sales/add'] = 'sales/add';
 
