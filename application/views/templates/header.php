@@ -60,6 +60,7 @@
                     <li><a href="<?= base_url('appointments') ?>">Appointments</a></li>
                     <li><a href="<?= base_url('inventory') ?>">Inventory</a></li>
                     <li><a href="<?= base_url('sales') ?>">Sales</a></li>
+                    <li><a href="<?= base_url('orders') ?>">Orders</a></li>
                 </ul>
             </div>
             <div class="nav-right">
