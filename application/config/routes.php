@@ -94,3 +94,26 @@ $route['inventory/delete_image/(:num)'] = 'inventory/delete_image/$1';
 $route['sales'] = 'sales/index';
 $route['sales/add'] = 'sales/add';
 
+// Marketplace Routes
+$route['marketplace'] = 'marketplace/index';
+$route['marketplace/product/(:num)'] = 'marketplace/product/$1';
+$route['marketplace/cart'] = 'marketplace/cart';
+$route['marketplace/add_to_cart'] = 'marketplace/add_to_cart';
+$route['marketplace/update_cart'] = 'marketplace/update_cart';
+$route['marketplace/remove_item/(:any)'] = 'marketplace/remove_item/$1';
+$route['marketplace/clear_cart'] = 'marketplace/clear_cart';
+$route['marketplace/checkout'] = 'marketplace/checkout';
+$route['marketplace/place_order'] = 'marketplace/place_order';
+
+// Buyer Routes
+$route['buyer/register'] = 'buyer/register';
+$route['buyer/login'] = 'buyer/login';
+$route['buyer/logout'] = 'buyer/logout';
+$route['buyer/account'] = 'buyer/account';
+$route['buyer/orders'] = 'buyer/orders';
+$route['buyer/order_detail/(:num)'] = 'buyer/order_detail/$1';
+
+// Admin Order Routes
+$route['orders'] = 'orders/index';
+$route['orders/view/(:num)'] = 'orders/view/$1';
+$route['orders/update_status/(:num)'] = 'orders/update_status/$1';
