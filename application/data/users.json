@@ -18,5 +18,17 @@
         "created_at": "2025-12-21 14:24:43",
         "status": "active",
         "id": 2
+    },
+    {
+        "username": "test002",
+        "email": "juan.delacruz88@gmail.com",
+        "password": "$2y$10$NjpWG3jx9cedcEGNtcNNqOchwYygSnE8CkCtKsk453aPIzcICdMpe",
+        "full_name": "Juan dela Cruz",
+        "phone": "09876543210",
+        "address": "89 Road 8, Bagong Pag-asa, Quezon City",
+        "role": "buyer",
+        "created_at": "2025-12-30 13:55:40",
+        "status": "active",
+        "id": 3
     }
 ]
